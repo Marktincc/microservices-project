@@ -23,22 +23,27 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
     @GetMapping("/getAll")
-    public List<Customer> getAll() {return service.getAll();}
+    public List<Customer> getAll() {
+        return service.getAll();
+    }
 
     @GetMapping("/getById/{id}")
-    public Customer getById(@PathVariable Long id){
+    public Customer getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Customer> create(@RequestBody Customer customer){
+    public ResponseEntity<Customer> create(@RequestBody Customer customer) {
         Customer newCustomer = service.save(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(newCustomer);
     }
 
-    @PatchMapping ("/update/{id}")
-    public ResponseEntity getById(@PathVariable Long id,@RequestBody Map<String, Object> updates){
-        Customer updateCustomer = service.updatePartial(id,updates);
-        return ResponseEntity.ok(updateCustomer);
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<Customer> updateById(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        Customer updatedCustomer = service.updatePartial(id, updates);
+        return ResponseEntity.ok(updatedCustomer);
     }
+
+
+
 }

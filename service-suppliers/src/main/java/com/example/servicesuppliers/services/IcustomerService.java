@@ -9,9 +9,13 @@ import java.util.Map;
 
 public interface IcustomerService {
     List<Customer> getAll();
+
     Customer getById(Long Id);
 
     Customer save(Customer customer);
 
-    Customer updatePartial(Long id, Map<String, Object> updates);
+
+    Customer updatePartial(long id, Map<String, Object> updates);
+
+
 }

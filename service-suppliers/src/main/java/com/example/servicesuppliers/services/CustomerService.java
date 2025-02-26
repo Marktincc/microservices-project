@@ -3,6 +3,7 @@ package com.example.servicesuppliers.services;
 
 import com.example.servicesuppliers.entities.Customer;
 import com.example.servicesuppliers.repository.CustomerRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -34,7 +35,7 @@ public class CustomerService implements IcustomerService {
 
 
 
-    public Customer updatePartial(long id, Map<String, Object> updates) {
+    public Customer updatePartial(long id, @NotNull Map<String, Object> updates) {
         Customer customer = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Proveedor no encontrado con ID: " + id));
         updates.forEach((key, value) -> {
