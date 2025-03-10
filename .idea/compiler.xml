@@ -15,11 +15,14 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
+        <module name="service-customer" />
         <module name="api-gateway" />
+        <module name="service-categories (2)" />
+        <module name="service-categories (3)" />
         <module name="service_productos" />
         <module name="service-suppliers" />
         <module name="service-categories" />
-        <module name="service-customer" />
+        <module name="service-categories (1)" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +30,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="service-categories" options="-parameters" />
+      <module name="service-categories (1)" options="-parameters" />
+      <module name="service-categories (2)" options="-parameters" />
+      <module name="service-categories (3)" options="-parameters" />
       <module name="service-customer" options="-parameters" />
       <module name="service-suppliers" options="-parameters" />
       <module name="service_productos" options="-parameters" />

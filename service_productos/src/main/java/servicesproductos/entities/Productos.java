@@ -1,10 +1,8 @@
 package servicesproductos.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
-
 
 @Entity
 @Table(name = "productos")
@@ -12,18 +10,27 @@ import lombok.*;
 @Getter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor  // ✅ Constructor vacío necesario para Jackson
-@AllArgsConstructor // ✅ Constructor con todos los campos
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Productos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private Long id;
-    @JsonProperty("nombre_pro")
-    private String nombre_pro;
+
+    @Column(name = "nombreProducto", length = 45)
+    @JsonProperty("nombreProducto")
+    private String nombreProducto;
+
     @JsonProperty("cantidad")
     private int cantidad;
+
     @JsonProperty("valor")
     private double valor;
+
+    @Column(name = "proveedor_idProveedor")
+    private Long providerId;
+
+    @Column(name = "categoriaId")
+    private Long categoriaId;
 }
