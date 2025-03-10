@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/categorias")
 public class CategoryController {
     @Autowired
     private ICategoryService service;
