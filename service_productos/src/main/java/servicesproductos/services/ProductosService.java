@@ -21,7 +21,6 @@ public class ProductosService implements IproductosService {
 
     @Autowired
     private ProductosRepository repository;
-    private final RestTemplate restTemplate;
 
 
     public List<Productos> getAll() {
@@ -32,7 +31,7 @@ public class ProductosService implements IproductosService {
 
 
     // HACER LLAMADO DE PRODUCTOS POR CATEGORIAS CONEXION CON OTRO MICROSERVICIO
-
+    private final RestTemplate restTemplate;
 
     @Value("${service.categorias.url}") // URL del microservicio de categorías
     private String categoriasServiceUrl;

@@ -19,7 +19,6 @@
         <module name="api-gateway" />
         <module name="service-categories (2)" />
         <module name="service-categories (3)" />
-        <module name="service_productos" />
         <module name="service-suppliers" />
         <module name="service-categories" />
         <module name="service-categories (1)" />
