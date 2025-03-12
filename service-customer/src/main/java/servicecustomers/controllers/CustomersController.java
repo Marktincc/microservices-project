@@ -17,11 +17,12 @@ public class CustomersController {
     @Autowired
     private ICustomersService service;
 
-    @Autowired
-    private CustomersRepository repository;
+
 
     @GetMapping("/getAll")
     public List<Customers> getAll() {return service.getAll();}
+
+
 
 
 }

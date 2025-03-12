@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>service-customer</artifactId>
+    <artifactId>service-products</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-customer</name>
-    <description>service-customer</description>
+    <name>service-products</name>
+    <description>service-products</description>
     <url/>
     <licenses>
         <license/>
@@ -61,6 +61,10 @@
             <artifactId>annotations</artifactId>
             <version>26.0.2</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
         </dependency>
     </dependencies>
 

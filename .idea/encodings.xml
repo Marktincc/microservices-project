@@ -5,8 +5,9 @@
     <file url="file://$PROJECT_DIR$/service-categories/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-customer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-customer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-products/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-products/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-sales/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-suppliers/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/service_productos/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/service_productos/src/main/resources" charset="UTF-8" />
   </component>
 </project>

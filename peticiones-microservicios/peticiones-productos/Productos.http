@@ -3,3 +3,4 @@ GET {{APIURL}}/productos/categoria/1
 
 ### Obtener todos los productos
 GET {{APIURL}}/productos/getAll
+

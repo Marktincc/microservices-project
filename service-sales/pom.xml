@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>service-categories</artifactId>
+    <artifactId>service-sales</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-categories</name>
-    <description>service-categories</description>
+    <name>service-sales</name>
+    <description>service-sales</description>
     <url/>
     <licenses>
         <license/>
@@ -29,8 +29,6 @@
     <properties>
         <java.version>17</java.version>
     </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,16 +53,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>26.0.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
         </dependency>
     </dependencies>
 
