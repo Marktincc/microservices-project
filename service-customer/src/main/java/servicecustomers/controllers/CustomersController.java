@@ -22,7 +22,10 @@ public class CustomersController {
     @GetMapping("/getAll")
     public List<Customers> getAll() {return service.getAll();}
 
+@GetMapping("/getById/{id}")
+public Customers getById(@PathVariable Long id){
+        return service.getById(id);
 
-
+}
 
 }

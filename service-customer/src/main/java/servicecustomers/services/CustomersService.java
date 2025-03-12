@@ -23,7 +23,8 @@ public class CustomersService implements ICustomersService {
 
     @Override
     public Customers getById(Long id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
     }
 
     @Override
