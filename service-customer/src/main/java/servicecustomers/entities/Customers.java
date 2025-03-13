@@ -30,7 +30,7 @@ public class Customers {
     private String telefono;
     @JsonProperty("rol")
     private String rol;
-    @JsonProperty("contraseña_hash")
-    private String contraseña_hash;
+    @JsonProperty("password")
+    private String password;
 
 }

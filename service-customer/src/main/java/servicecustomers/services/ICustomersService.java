@@ -17,4 +17,7 @@ public interface ICustomersService {
     Customers updateCategory (long id, Map<String, Object> dataUpdated);
 
     void delete (long id);
+
+    //LOGIN
+    Map<String,String> login (String correo, String password);
 }
