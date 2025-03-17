@@ -1,4 +1,4 @@
-package servicecustomers;
+package com.example.servicescustomers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

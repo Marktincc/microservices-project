@@ -1,4 +1,4 @@
-package servicecustomers.entities;
+package com.example.servicescustomers.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -28,8 +28,10 @@ public class Customers {
     private String correo;
     @JsonProperty("telefono")
     private String telefono;
+    
+    @Enumerated(EnumType.STRING)
     @JsonProperty("rol")
-    private String rol;
+    private Rol rol;
     @JsonProperty("password")
     private String password;
 

@@ -1,13 +1,10 @@
-package servicecustomers.services;
+package com.example.servicescustomers.services;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ReflectionUtils;
-import servicecustomers.entities.Customers;
-import servicecustomers.repository.CustomersRepository;
+import com.example.servicescustomers.entities.Customers;
+import com.example.servicescustomers.repository.CustomersRepository;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -52,7 +49,7 @@ public class CustomersService implements ICustomersService {
                         throw new RuntimeException("Usuario sin rol asignado");
                     }
                     Map<String, String> response = new HashMap<>();
-                    response.put("rol", customer.getRol());
+                    response.put("rol", String.valueOf(customer.getRol()));
                     return response;
                 })
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));

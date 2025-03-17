@@ -8,19 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
       </profile>
-      <profile name="Annotation profile for api-gateway" enabled="true">
+      <profile name="Annotation profile for service-suppliers" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="service-customer" />
         <module name="service-products" />
         <module name="api-gateway" />
         <module name="service-suppliers" />
-        <module name="service-categories (1)" />
         <module name="service-categories" />
+        <module name="service-categories (1)" />
         <module name="service-sales" />
       </profile>
     </annotationProcessing>

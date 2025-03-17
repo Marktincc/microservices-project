@@ -1,11 +1,10 @@
-    package servicecustomers.repository;
+    package com.example.servicescustomers.repository;
 
 
     import org.springframework.data.repository.CrudRepository;
     import org.springframework.stereotype.Repository;
-    import servicecustomers.entities.Customers;
+    import com.example.servicescustomers.entities.Customers;
 
-    import java.util.List;
     import java.util.Optional;
 
 

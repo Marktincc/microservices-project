@@ -1,4 +1,4 @@
-package servicecustomers.controllers;
+package com.example.servicescustomers.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,10 +6,9 @@ import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import servicecustomers.entities.Customers;
+import com.example.servicescustomers.entities.Customers;
 
-import servicecustomers.services.ICustomersService;
-
+import com.example.servicescustomers.services.ICustomersService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

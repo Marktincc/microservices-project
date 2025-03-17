@@ -1,7 +1,7 @@
-package servicecustomers.services;
+package com.example.servicescustomers.services;
 
 
-import servicecustomers.entities.Customers;
+import com.example.servicescustomers.entities.Customers;
 
 import java.util.List;
 import java.util.Map;
