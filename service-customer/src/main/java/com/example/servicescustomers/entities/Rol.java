@@ -1,6 +1,6 @@
-package com.example.servicescustomers.entities;
+    package com.example.servicescustomers.entities;
 
-public enum Rol {
-    admin,
-    user
-}
+    public enum Rol {
+        admin,
+        user
+    }
