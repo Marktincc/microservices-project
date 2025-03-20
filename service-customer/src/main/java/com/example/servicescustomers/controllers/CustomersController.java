@@ -1,6 +1,5 @@
 package com.example.servicescustomers.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
@@ -17,10 +16,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/usuarios")
 public class CustomersController {
+
     @Autowired
     private ICustomersService service;
-
-//comentario
 
     @GetMapping("/getAll")
     public List<Customers> getAll() {
@@ -30,9 +28,7 @@ public class CustomersController {
     @GetMapping("/getById/{id}")
     public Customers getById(@PathVariable Long id) {
         return service.getById(id);
-
     }
-
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customers customers) {
