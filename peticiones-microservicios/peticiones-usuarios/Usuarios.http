@@ -1,0 +1,15 @@
+GET {{APIURL}}/usuarios/getAll
+
+###
+
+GET {{APIURL}}/usuarios/getById/1
+
+###
+
+POST {{APIURL}}/usuarios/login
+Content-Type: application/json
+
+{
+  "correo": "rodriguez@example.com",
+  "password": "hash78"
+}

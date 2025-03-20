@@ -1,0 +1,8 @@
+com\example\servicescustomers\controllers\CustomersController.class
+com\example\servicescustomers\entities\Rol.class
+com\example\servicescustomers\services\CustomersService.class
+com\example\servicescustomers\services\ICustomersService.class
+com\example\servicescustomers\ServiceCustomersApplication.class
+com\example\servicescustomers\controllers\CustomersController$1.class
+com\example\servicescustomers\entities\Customers.class
+com\example\servicescustomers\repository\CustomersRepository.class

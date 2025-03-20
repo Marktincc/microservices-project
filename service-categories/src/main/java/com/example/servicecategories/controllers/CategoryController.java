@@ -17,9 +17,6 @@ public class CategoryController {
     @Autowired
     private ICategoryService service;
 
-    @Autowired
-    private CategoryRepository repository;
-
     @GetMapping("/getAll")
     public List<Category> getAll() {return service.getAll();}
 

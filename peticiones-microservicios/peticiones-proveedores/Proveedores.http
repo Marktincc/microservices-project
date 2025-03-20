@@ -1,0 +1,31 @@
+### GET ALL
+GET {{APIURL}}/proveedores/getAll
+
+### GET SUPPLIER BY ID
+GET {{APIURL}}/proveedores/getById/1
+
+### CREATE SUPPLIER
+POST {{APIURL}}/proveedores/create
+Content-Type: application/json
+
+{
+    "nombre" : "HP",
+    "nit" : "132456213",
+    "direccion" : "Calle 64a # 50 - 09",
+    "telefono": "3201546584",
+    "correo": "hpcolombia@gmail.com"
+}
+
+
+### UPDATE SUPPLIER
+PATCH {{APIURL}}/proveedores/update/1
+Content-Type: application/json
+
+{
+  "telefono" : "6012156561",
+  "nit" : "00156489"
+}
+
+
+### DELETE SUPPLIER
+DELETE {{APIURL}}/proveedores/delete/2

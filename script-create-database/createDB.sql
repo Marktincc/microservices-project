@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS customersDB;
+CREATE DATABASE IF NOT EXISTS categoriesDB;
+CREATE DATABASE IF NOT EXISTS suppliersDB;
+CREATE DATABASE IF NOT EXISTS productosDB;
+
+
+DESCRIBE customersDB.customers;
+DESCRIBE categoriesDB.categorias;
+DESCRIBE productosDB.productos;
