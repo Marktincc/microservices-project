@@ -29,6 +29,17 @@ public class CustomersController {
     public Customers getById(@PathVariable Long id) {
         return service.getById(id);
     }
+    @PostMapping("/create")
+    public ResponseEntity<Customers> create (@RequestBody Customers Customers) {
+        Customers CustomersCreated = service.create(Customers);
+        return ResponseEntity.status(201).body(CustomersCreated);
+    }
+
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<Customers> update (@PathVariable Long id, @RequestBody Map<String, Object> dataUpdated) {
+        Customers CustomersUpdated = service.updateCustomers(id, dataUpdated);
+        return ResponseEntity.ok(CustomersUpdated);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customers customers) {
