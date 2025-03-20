@@ -25,7 +25,9 @@ public class CategoryService implements ICategoryService {
                 .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
     }
 
-    public Category create(Category category) {return repository.save(category);}
+    public Category create(Category category) {
+        convertStringsToUpper(category);
+        return repository.save(category);}
 
     public Category updateCategory (long id, @NotNull Map<String, Object> dataUpdated) {
         Category category = repository.findById(id)
@@ -34,6 +36,9 @@ public class CategoryService implements ICategoryService {
             Field field = ReflectionUtils.findField(Category.class, key);
             if (field != null) {
                 field.setAccessible(true);
+                if (value instanceof String) {
+                    value = ((String) value).toUpperCase();
+                }
                 ReflectionUtils.setField(field, category, value);
             }
         });
@@ -45,5 +50,13 @@ public class CategoryService implements ICategoryService {
                 .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
 
         repository.delete(category);
+    }
+
+    // Método para convertir los Strings en mayúsculas antes de guardar
+    private void convertStringsToUpper(Category category) {
+        if (category.getName() != null) {
+            category.setName(category.getName().toUpperCase());
+        }
+
     }
 }

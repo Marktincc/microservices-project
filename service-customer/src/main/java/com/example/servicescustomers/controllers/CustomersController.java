@@ -33,16 +33,34 @@ public class CustomersController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customers customers) {
         try {
-            // Llamamos al servicio para obtener el rol
+            // Intentamos obtener el rol del usuario
             Map<String, String> response = service.login(customers.getCorreo(), customers.getPassword());
-            return ResponseEntity.ok(response); // Retorna el mapa como respuesta JSON
+            return ResponseEntity.ok(response);
+
         } catch (RuntimeException e) {
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .body(new HashMap<String, String>() {{
-                        put("message", "Credenciales inválidas");
-                        put("status", "error");
-                    }});
+            String message = e.getMessage();
+
+
+            if ("Cuenta inactiva. Contacte al administrador.".equals(message)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
+                        "message", message,
+                        "status", "inactive"
+                ));
+            }
+
+
+            if ("Credenciales inválidas".equals(message)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
+                        "message", message,
+                        "status", "error"
+                ));
+            }
+
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
+                    "message", "Error en el servidor",
+                    "status", "error"
+            ));
         }
     }
 
