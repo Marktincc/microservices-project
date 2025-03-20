@@ -28,11 +28,14 @@ public class Customers {
     private String correo;
     @JsonProperty("telefono")
     private String telefono;
-    
+
     @Enumerated(EnumType.STRING)
     @JsonProperty("rol")
     private Rol rol;
     @JsonProperty("password")
     private String password;
+    @JsonProperty("estado")
+    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
+    private Boolean estado = Boolean.TRUE;
 
 }

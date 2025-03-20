@@ -40,18 +40,17 @@ public class CustomersService implements ICustomersService {
 
     }
 
-    
+
     @Override
     public Map<String, String> login(String correo, String password) {
         return repository.findByCorreoAndPassword(correo, password)
                 .map(customer -> {
-                    if (customer.getRol() == null) {
-                        throw new RuntimeException("Usuario sin rol asignado");
+                    if (Boolean.FALSE.equals(customer.getEstado())) {
+                        throw new RuntimeException("Cuenta inactiva. Contacte al administrador.");
                     }
-                    Map<String, String> response = new HashMap<>();
-                    response.put("rol", String.valueOf(customer.getRol()));
-                    return response;
+                    return Map.of("rol", customer.getRol().toString()); // Devuelve solo el rol
                 })
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
     }
+
 }
