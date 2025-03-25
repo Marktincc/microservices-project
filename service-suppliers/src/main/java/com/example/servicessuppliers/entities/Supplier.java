@@ -1,4 +1,4 @@
-package com.example.serviceProveedores.entities;
+package com.example.servicessuppliers.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

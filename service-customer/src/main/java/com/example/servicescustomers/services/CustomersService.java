@@ -79,7 +79,7 @@ public class CustomersService implements ICustomersService {
                     if (Boolean.FALSE.equals(customer.getEstado())) {
                         throw new RuntimeException("Cuenta inactiva. Contacte al administrador.");
                     }
-                    return Map.of("rol", customer.getRol().toString()); // Devuelve solo el rol
+                    return Map.of("rol", customer.getRol().toString(),"nombre", customer.getNombre());
                 })
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
     }

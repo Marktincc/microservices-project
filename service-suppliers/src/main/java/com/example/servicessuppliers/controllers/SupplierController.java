@@ -1,10 +1,9 @@
-package com.example.serviceProveedores.controllers;
+package com.example.servicessuppliers.controllers;
 
-import com.example.serviceProveedores.entities.Supplier;
-import com.example.serviceProveedores.services.ISupplierService;
+import com.example.servicessuppliers.entities.Supplier;
+import com.example.servicessuppliers.services.ISupplierService;
 
 
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

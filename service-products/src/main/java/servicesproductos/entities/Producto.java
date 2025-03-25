@@ -26,7 +26,7 @@ public class Producto {
     private int cantidad;
 
     @JsonProperty("valor")
-    private double valor;
+    private int valor;
 
     @Column(name = "proveedor_idProveedor")
     private Long providerId;

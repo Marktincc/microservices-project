@@ -1,8 +1,8 @@
-package com.example.serviceProveedores.services;
+package com.example.servicessuppliers.services;
 
 
-import com.example.serviceProveedores.entities.Supplier;
-import com.example.serviceProveedores.repository.SupplierRepository;
+import com.example.servicessuppliers.entities.Supplier;
+import com.example.servicessuppliers.repository.SupplierRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

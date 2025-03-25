@@ -1,6 +1,6 @@
-package com.example.serviceProveedores.services;
+package com.example.servicessuppliers.services;
 
-import com.example.serviceProveedores.entities.Supplier;
+import com.example.servicessuppliers.entities.Supplier;
 
 import java.util.List;
 import java.util.Map;

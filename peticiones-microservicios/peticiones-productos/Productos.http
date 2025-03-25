@@ -9,11 +9,11 @@ POST {{APIURL}}/productos/create
 Content-Type: application/json
 
 {
-  "nombreProducto" : "Mouse Logitech G502",
+  "nombreProducto" : "Manzana",
   "cantidad" : 16,
-  "valor" : 205.000,
+  "valor" : 5000,
   "providerId" : 3,
-  "categoriaId" : 2
+  "categoriaId" : 1
 }
 
 ### Modificar producto
