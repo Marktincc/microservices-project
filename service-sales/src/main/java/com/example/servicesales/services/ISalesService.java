@@ -8,4 +8,7 @@ import java.util.List;
 public interface ISalesService {
 
     List<Sales> getAll();
+
+    List<SalesDTO> getByCustomers(Long customerId);
+    List<SalesDTO>getByProductosId(Long productosId);
 }

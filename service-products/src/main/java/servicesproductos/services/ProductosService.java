@@ -40,7 +40,7 @@ public class ProductosService implements IproductosService {
         this.restTemplate = restTemplate;
     }
 
-    public List<ProductoDTO> getByCategoria(Long categoriaId) {
+    public List<ProductoDTO> getByCategoria(Long categoriaId) {  // get esa URL
         List<Productos> productos = repository.findByCategoriaId(categoriaId);
 
         CategoriaDTO categoria = restTemplate.getForObject(

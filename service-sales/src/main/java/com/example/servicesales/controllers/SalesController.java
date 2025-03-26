@@ -3,7 +3,7 @@ package com.example.servicesales.controllers;
 
 import com.example.servicesales.entities.Sales;
 import com.example.servicesales.services.ISalesService;
-import com.example.servicesales.services.SalesService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

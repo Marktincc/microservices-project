@@ -30,7 +30,6 @@ public class CustomersController {
     @GetMapping("/getById/{id}")
     public Customers getById(@PathVariable Long id) {
         return service.getById(id);
-
     }
 
 
