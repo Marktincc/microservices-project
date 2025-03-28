@@ -9,6 +9,6 @@ public interface ISalesService {
 
     List<Sales> getAll();
 
-    List<SalesDTO> getByCustomers(Long customerId);
-    List<SalesDTO>getByProductosId(Long productosId);
+
+    List<SalesDTO>getByIdCustomersAndProducts(Long customerId, Long productosId);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SalesService implements ISalesService{
@@ -35,27 +36,22 @@ public class SalesService implements ISalesService{
         public List <SalesDTO> getByIdCustomersAndProducts(Long customerId , Long productosId)
     {
 
-        List<Sales> sales1 = repository.findByCustomerId(customerId);
+        List<Sales> sales = repository.findByCustomerIdAndIdProducto(customerId , productosId);
 
         CustomersDTO customers = restTemplate.getForObject(salesServiceUrl + "/usuarios/getById/" + customerId,
                 CustomersDTO.class);
 
-        List<Sales> sales = repository.findByProductosId(productosId);
-
         ProductsDTO products = restTemplate.getForObject(
                 salesServiceUrl + "/productos/categoria/" + productosId, ProductsDTO.class
         );
-
         return sales.stream()
                 .map (sale -> SalesDTO.builder()
-                        .id(Sales.getId())
-                        .valor(Sales.getValor())
+                        .id(sale.getId())
+                        .valor(sale.getValor())
                         .nombre(customers.getNombre())
                         .apellidos(customers.getApellidos())
                         .nombreProducto(products.getNombreProducto())
-
-                )
-
-
+                        .build())
+                .collect(Collectors.toList());
     }
 }

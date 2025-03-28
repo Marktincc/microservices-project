@@ -11,4 +11,6 @@ public interface ISalesRepository extends CrudRepository <Sales, Long>{
     List<Sales> findByCustomerId(Long customerId);
 
     List<Sales> findByProductosId(Long productosId);
+
+    List<Sales> findByCustomerIdAndIdProducto(Long customerId, Long productosId);
 }
