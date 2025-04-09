@@ -5,12 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ISalesRepository extends CrudRepository <Sales, Long>{
-    List<Sales> Id(Long id);
-
-    List<Sales> findByCustomerId(Long customerId);
-
-    List<Sales> findByProductosId(Long productosId);
-
+public interface SalesRepository extends CrudRepository <Sales, Long>{
     List<Sales> findByCustomerIdAndIdProducto(Long customerId, Long productosId);
+
 }

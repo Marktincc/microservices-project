@@ -8,7 +8,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "ventas")
 @Setter
 @Getter
 @ToString
