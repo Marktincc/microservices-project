@@ -1,6 +1,33 @@
-### Obtener productos por categoria
-GET {{APIURL}}/productos/categoria/1
-
 ### Obtener todos los productos
 GET {{APIURL}}/productos/getAll
 
+### Obtener por id
+GET {{APIURL}}/productos/getById/2
+
+### Crear producto
+POST {{APIURL}}/productos/create
+Content-Type: application/json
+
+{
+  "nombreProducto" : "Manzana",
+  "cantidad" : 16,
+  "valor" : 5000,
+  "providerId" : 3,
+  "categoriaId" : 1
+}
+
+### Modificar producto
+PATCH {{APIURL}}/productos/update/2
+Content-Type: application/json
+
+{
+  "cantidad": 2
+}
+
+
+### Eliminar producto
+DELETE {{APIURL}}/productos/delete/1
+
+
+### Obtener productos por categoria
+GET {{APIURL}}/productos/categoria/2

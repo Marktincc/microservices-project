@@ -12,9 +12,9 @@ public interface ICustomersService {
 
     Customers getById (Long id);
 
-    Customers create (Customers category);
+    Customers create (Customers Customers);
 
-    Customers updateCategory (long id, Map<String, Object> dataUpdated);
+    Customers updateCustomers (long id, Map<String, Object> dataUpdated);
 
     void delete (long id);
 

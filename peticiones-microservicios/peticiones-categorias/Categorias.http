@@ -1,5 +1,9 @@
 GET {{APIURL}}/categorias/getAll
 
+
+### get by id
+GET {{APIURL}}/categorias/getById/100
+
 ### create category
 POST {{APIURL}}/categorias/create
 Content-Type: application/json

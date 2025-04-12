@@ -1,6 +1,5 @@
 package com.example.servicescustomers.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
@@ -17,10 +16,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/usuarios")
 public class CustomersController {
+
     @Autowired
     private ICustomersService service;
-
-//comentario
 
     @GetMapping("/getAll")
     public List<Customers> getAll() {
@@ -31,21 +29,49 @@ public class CustomersController {
     public Customers getById(@PathVariable Long id) {
         return service.getById(id);
     }
+    @PostMapping("/create")
+    public ResponseEntity<Customers> create (@RequestBody Customers Customers) {
+        Customers CustomersCreated = service.create(Customers);
+        return ResponseEntity.status(201).body(CustomersCreated);
+    }
 
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<Customers> update (@PathVariable Long id, @RequestBody Map<String, Object> dataUpdated) {
+        Customers CustomersUpdated = service.updateCustomers(id, dataUpdated);
+        return ResponseEntity.ok(CustomersUpdated);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customers customers) {
         try {
-            // Llamamos al servicio para obtener el rol
+            // Intentamos obtener el rol del usuario
             Map<String, String> response = service.login(customers.getCorreo(), customers.getPassword());
-            return ResponseEntity.ok(response); // Retorna el mapa como respuesta JSON
+            return ResponseEntity.ok(response);
+
         } catch (RuntimeException e) {
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .body(new HashMap<String, String>() {{
-                        put("message", "Credenciales inválidas");
-                        put("status", "error");
-                    }});
+            String message = e.getMessage();
+
+
+            if ("Cuenta inactiva. Contacte al administrador.".equals(message)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
+                        "message", message,
+                        "status", "inactive"
+                ));
+            }
+
+
+            if ("Credenciales inválidas".equals(message)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
+                        "message", message,
+                        "status", "error"
+                ));
+            }
+
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
+                    "message", "Error en el servidor",
+                    "status", "error"
+            ));
         }
     }
 
