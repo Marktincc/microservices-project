@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Field;
@@ -43,11 +41,11 @@ public class SalesService implements ISalesService {
     }
 
 
-    public List<SalesDTO> getByIdCustomersAndProducts(Long customerId, Long productosId) {
+    public List<SalesDTO> getByIdCustomersAndProducts(Long idUsuario, Long productosId) {
 
-        List<Sales> sales = repository.findByCustomerIdAndIdProducto(customerId, productosId);
+        List<Sales> sales = repository.findByidUsuarioAndIdProducto(idUsuario, productosId);
 
-        CustomersDTO customers = restTemplate.getForObject(salesServiceUrl + "/usuarios/getById/" + customerId,
+        CustomersDTO customers = restTemplate.getForObject(salesServiceUrl + "/usuarios/getById/" + idUsuario,
                 CustomersDTO.class);
 
         ProductsDTO products = restTemplate.getForObject(
@@ -64,6 +62,10 @@ public class SalesService implements ISalesService {
                 .collect(Collectors.toList());
     }
 
+
+    public Sales create(Sales sale) { return repository.save(sale); }
+
+
     public Sales updateSales(long id, @NotNull Map<String, Object> dataUpdated) {
         Sales sales = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Factura no encontrada"));
@@ -75,5 +77,13 @@ public class SalesService implements ISalesService {
             }
         });
         return repository.save(sales);
+    }
+
+    public void delete (long id) {
+        Sales sale = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("factura no encontrada"));
+
+        repository.delete(sale);
+
     }
 }
