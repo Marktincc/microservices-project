@@ -40,4 +40,5 @@ public class CategoryController {
         service.delete(id);
         return ResponseEntity.ok("Categoria eliminada correctamente");
     }
+
 }

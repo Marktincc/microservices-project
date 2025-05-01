@@ -68,7 +68,8 @@ public class CustomersService implements ICustomersService {
     }
     @Override
     public void delete(long id) {
-
+        Customers customers = repository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        repository.delete(customers);
     }
 
 
@@ -79,7 +80,7 @@ public class CustomersService implements ICustomersService {
                     if (Boolean.FALSE.equals(customer.getEstado())) {
                         throw new RuntimeException("Cuenta inactiva. Contacte al administrador.");
                     }
-                    return Map.of("rol", customer.getRol().toString(),"nombre", customer.getNombre());
+                    return Map.of("rol", customer.getRol().toString(),"nombre", customer.getNombre(),"id", customer.getId().toString());
                 })
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
     }

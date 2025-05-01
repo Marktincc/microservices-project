@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import servicesproductos.entities.ProductoDTO;
 import servicesproductos.entities.Producto;
+import servicesproductos.entities.ProductoResponseGetAllDTO;
 import servicesproductos.services.IproductosService;
 
 import java.util.List;
@@ -55,5 +56,20 @@ public class ProductosController {
     public ResponseEntity<String> deleteProduct (@PathVariable Long id) {
         productosService.delete(id);
         return ResponseEntity.ok("Producto eliminado correctamente");
+    }
+    @GetMapping("/getAll1")
+    public List<ProductoResponseGetAllDTO> getAllProductosConNombres() {
+        return productosService.getAllProductosConNombres();
+    }
+
+    @DeleteMapping("/deleteByProveedor/{proveedorId}")
+    public ResponseEntity<Void> deleteByProveedor(@PathVariable Long proveedorId) {
+        productosService.deleteByProveedor(proveedorId);
+        return ResponseEntity.noContent().build();  // 204 No Content
+    }
+    @DeleteMapping("/deleteByCategoria/{categoriaId}")
+    public ResponseEntity<Void> deleteByCategoria(@PathVariable Long categoriaId) {
+        productosService.deleteByCategoria(categoriaId);
+        return ResponseEntity.noContent().build();  // 204 No Content
     }
 }

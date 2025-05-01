@@ -21,13 +21,17 @@ PATCH {{APIURL}}/productos/update/2
 Content-Type: application/json
 
 {
-  "nombreProducto" : "Mouse Logitech G203"
+  "nombreProducto" : "Mouse Logitech G203",
+  "providerId" : 3,
+  "categoriaId" : 1
 }
 
 
 ### Eliminar producto
 DELETE {{APIURL}}/productos/delete/1
 
+### Obtener productos con nombre de proveedor y categoria
+GET {{APIURL}}/productos/getAll1
 
 ### Obtener productos por categoria
 GET {{APIURL}}/productos/categoria/2

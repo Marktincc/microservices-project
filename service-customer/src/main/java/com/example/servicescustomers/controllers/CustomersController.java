@@ -40,6 +40,11 @@ public class CustomersController {
         Customers CustomersUpdated = service.updateCustomers(id, dataUpdated);
         return ResponseEntity.ok(CustomersUpdated);
     }
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<String> deleteProduct (@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.ok("Cliente eliminado correctamente");
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customers customers) {

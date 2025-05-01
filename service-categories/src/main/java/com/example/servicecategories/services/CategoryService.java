@@ -4,8 +4,10 @@ import com.example.servicecategories.entities.Category;
 import com.example.servicecategories.repository.CategoryRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -45,12 +47,12 @@ public class CategoryService implements ICategoryService {
         return repository.save(category);
     }
 
-    public void delete (long id) {
-        Category category = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
-
-        repository.delete(category);
-    }
+//    public void delete (long id) {
+//        Category category = repository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
+//
+//        repository.delete(category);
+//    }
 
     // Método para convertir los Strings en mayúsculas antes de guardar
     private void convertStringsToUpper(Category category) {
@@ -58,5 +60,23 @@ public class CategoryService implements ICategoryService {
             category.setName(category.getName().toUpperCase());
         }
 
+    }
+
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Value("${service.productos.url}")  // URL del microservicio de productos
+    private String productosServiceUrl;
+
+    public void delete(long id) {
+        // Primero, eliminamos los productos asociados al proveedor
+        restTemplate.delete(productosServiceUrl + "/productos/deleteByCategoria/" + id);
+
+        // Ahora, eliminamos el proveedor
+        Category category = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+
+        repository.delete(category);
     }
 }

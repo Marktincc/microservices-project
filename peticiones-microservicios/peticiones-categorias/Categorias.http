@@ -2,15 +2,15 @@ GET {{APIURL}}/categorias/getAll
 
 
 ### get by id
-GET {{APIURL}}/categorias/getById/100
+GET {{APIURL}}/categorias/getById/11
 
 ### create category
 POST {{APIURL}}/categorias/create
 Content-Type: application/json
 
 {
-    "name" : ""
+    "name" : "zapatoss"
 }
 
 ### delete category
-DELETE {{APIURL}}/categorias/delete/7
+DELETE {{APIURL}}/categorias/delete/11

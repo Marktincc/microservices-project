@@ -29,8 +29,8 @@ public class Producto {
     private int valor;
 
     @Column(name = "proveedor_idProveedor")
-    private Long providerId;
+    private int providerId;
 
     @Column(name = "categoriaId")
-    private Long categoriaId;
+    private int categoriaId;
 }

@@ -2,6 +2,7 @@ package servicesproductos.services;
 
 import servicesproductos.entities.ProductoDTO;
 import servicesproductos.entities.Producto;
+import servicesproductos.entities.ProductoResponseGetAllDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,9 @@ public interface IproductosService {
     void delete (Long id);
 
     List<ProductoDTO> getByCategoria(Long categoriaId);
+
+    List<ProductoResponseGetAllDTO> getAllProductosConNombres();
+    void deleteByProveedor(Long proveedorId);
+    void deleteByCategoria(Long categoriaId);
+
 }
