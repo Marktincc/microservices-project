@@ -48,6 +48,9 @@ public class ProductosService implements IproductosService {
                 if ("providerId".equals(key) && value instanceof String) {
                     value = Integer.parseInt((String) value);
                 }
+                if ("cantidad".equals(key) && value instanceof String) {
+                    value = Integer.parseInt((String) value);
+                }
 
                 ReflectionUtils.setField(field, producto, value);
             }
