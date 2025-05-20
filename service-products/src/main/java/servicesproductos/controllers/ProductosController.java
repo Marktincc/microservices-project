@@ -62,6 +62,10 @@ public class ProductosController {
         return productosService.getAllProductosConNombres();
     }
 
+    @GetMapping("/getAllPrueba")
+    public List<Map<String, Object>> getAllPrueba() {
+        return productosService.getAllPrueba();
+    }
     @DeleteMapping("/deleteByProveedor/{proveedorId}")
     public ResponseEntity<Void> deleteByProveedor(@PathVariable Long proveedorId) {
         productosService.deleteByProveedor(proveedorId);

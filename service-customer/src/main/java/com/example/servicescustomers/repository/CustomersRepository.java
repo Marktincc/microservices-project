@@ -15,4 +15,6 @@
         Optional<Customers> findByCorreoAndPassword(String correo, String password);
 
 
+        Optional<Customers> findByCorreo(String correo);
+
     }

@@ -24,11 +24,13 @@ public class Customers {
     private String apellidos;
     @JsonProperty("direccion")
     private String direccion;
+
     @JsonProperty("correo")
+    @Column(unique = true)
     private String correo;
+
     @JsonProperty("telefono")
     private String telefono;
-
     @Enumerated(EnumType.STRING)
     @JsonProperty("rol")
     private Rol rol;

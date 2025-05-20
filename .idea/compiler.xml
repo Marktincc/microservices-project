@@ -3,16 +3,23 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for service-sales" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+      <profile name="Annotation profile for common-utils" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
-        <module name="api-gateway" />
-        <module name="service-sales" />
+        <module name="common-utils" />
+        <module name="service-suppliers" />
+        <module name="service-categories" />
         <module name="service-products" />
+        <module name="service-sales" />
       </profile>
       <profile name="Annotation profile for service-customer" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -20,10 +27,8 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="service-suppliers" />
-        <module name="service-categories" />
+        <module name="api-gateway" />
         <module name="service-customer" />
       </profile>
     </annotationProcessing>
@@ -35,6 +40,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
+      <module name="common-utils" options="-parameters" />
       <module name="service-categories" options="-parameters" />
       <module name="service-categories (1)" options="-parameters" />
       <module name="service-customer" options="-parameters" />

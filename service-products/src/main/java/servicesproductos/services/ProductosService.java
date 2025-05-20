@@ -2,6 +2,7 @@ package servicesproductos.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.client.RestTemplate;
@@ -125,5 +126,11 @@ public class ProductosService implements IproductosService {
         if (!productos.isEmpty()) {
             repository.deleteAll(productos); // Elimina los productos de la base de datos
         }
+    }
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    public List<Map<String, Object>> getAllPrueba() {
+        String sql = "call get_product_info()"; // Llama al procedimiento almacenado
+        return jdbcTemplate.queryForList(sql);
     }
 }

@@ -1,28 +1,29 @@
 package com.example.servicescustomers.services;
 
+import com.example.commonutils.security.jwt.JwtUtil;
+import com.example.commonutils.security.encryptPassword.PasswordUtil;
 import com.example.servicescustomers.entities.Rol;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.servicescustomers.entities.Customers;
 import com.example.servicescustomers.repository.CustomersRepository;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 @Service
 public class CustomersService implements ICustomersService {
 
     @Autowired
     private CustomersRepository repository;
+    @Autowired
+    private JwtUtil jwtUtil;
+    @Autowired
+    private PasswordUtil passwordUtil;
 
     public List<Customers> getAll() {
         return (List<Customers>) repository.findAll();
@@ -37,6 +38,11 @@ public class CustomersService implements ICustomersService {
 
     public Customers create(Customers Customers) {
         convertStringsToUpper(Customers);
+
+        //Encriptar contraseña
+        String rawPassword = Customers.getPassword();
+        Customers.setPassword(passwordUtil.encrypt(rawPassword));
+
         return repository.save(Customers);
     }
 
@@ -58,7 +64,13 @@ public class CustomersService implements ICustomersService {
                     } catch (IllegalArgumentException e) {
                         throw new RuntimeException("Invalid role value: " + value);
                     }
-                } else {
+                } else if (key.equals("password") && value instanceof String){
+
+                    // Encriptar contraseña
+                    String rawPassword = (String) value;
+                    String encryptedPassword = passwordUtil.encrypt(rawPassword);
+                    ReflectionUtils.setField(field, customer, encryptedPassword);
+                }else{
                     ReflectionUtils.setField(field, customer, value);
                 }
             }
@@ -73,17 +85,31 @@ public class CustomersService implements ICustomersService {
     }
 
 
+
     @Override
     public Map<String, String> login(String correo, String password) {
-        return repository.findByCorreoAndPassword(correo, password)
-                .map(customer -> {
-                    if (Boolean.FALSE.equals(customer.getEstado())) {
-                        throw new RuntimeException("Cuenta inactiva. Contacte al administrador.");
-                    }
-                    return Map.of("rol", customer.getRol().toString(),"nombre", customer.getNombre(),"id", customer.getId().toString());
-                })
+        Customers customer = repository.findByCorreo(correo)
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
+
+        // Comparar contraseña usando BCrypt
+        if (!passwordUtil.matches(password, customer.getPassword())) {
+            throw new RuntimeException("Credenciales inválidas");
+        }
+
+        if (Boolean.FALSE.equals(customer.getEstado())) {
+            throw new RuntimeException("Cuenta inactiva. Contacte al administrador.");
+        }
+
+        String token = jwtUtil.generarToken(customer.getNombre());
+
+        return Map.of(
+                "rol", customer.getRol().toString(),
+                "nombre", customer.getNombre(),
+                "id", customer.getId().toString(),
+                "token", token
+        );
     }
+
 
     // Método para convertir los Strings en mayúsculas antes de guardar
     private void convertStringsToUpper(Customers customer) {

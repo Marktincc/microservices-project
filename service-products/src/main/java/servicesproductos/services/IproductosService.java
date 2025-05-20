@@ -11,7 +11,7 @@ import java.util.Map;
 public interface IproductosService {
 
     List<Producto> getAll();    // Para obtener la lista de entidades
-
+    List<Map<String, Object>> getAllPrueba();
     Producto getById (Long id);
 
     Producto create (Producto producto);
