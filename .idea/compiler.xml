@@ -16,10 +16,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="common-utils" />
-        <module name="service-suppliers" />
-        <module name="service-categories" />
-        <module name="service-products" />
-        <module name="service-sales" />
       </profile>
       <profile name="Annotation profile for service-customer" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -29,7 +25,11 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="api-gateway" />
+        <module name="service-suppliers" />
+        <module name="service-categories" />
         <module name="service-customer" />
+        <module name="service-sales" />
+        <module name="service-products" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
